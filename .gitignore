@@ -10,6 +10,7 @@
 
 # production
 /build
+# ./vscode bỏ qua ko commit lên
 
 # misc
 .DS_Store
