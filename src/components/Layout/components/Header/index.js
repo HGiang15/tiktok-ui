@@ -10,7 +10,6 @@ import {
     faEarthAsia,
     faCircleQuestion,
     faKeyboard,
-    faCloudUpload,
     faUser,
     faCoins,
     faGear,
@@ -28,6 +27,8 @@ import AccountItem from '~/components/AccountItem';
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
+import { UploadIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -153,7 +154,7 @@ function Header() {
                         <React.Fragment>
                             <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <UploadIcon />
                                 </button>
                             </Tippy>
                         </React.Fragment>
@@ -166,10 +167,11 @@ function Header() {
 
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
-                                src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/7324706649963233288.jpeg?lk3s=a5d48078&nonce=69557&refresh_token=e73b7fbbf0cb09f83e3e5c099bd72f86&x-expires=1723129200&x-signature=qndLB09NRyWkyFg5alTlwLMPsNs%3D&shp=a5d48078&shcp=81f88b70"
+                                src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/7e55d6bc59682d3dce56dbdf9ce96f01~c5_720x720.jpeg?lk3s=a5d48078&nonce=18434&refresh_token=9f4c1ed60a867802942cc10f7679e582&x-expires=1723215600&x-signature=8TxVP2%2FLgZKsdeceUFcEHpw45m0%3D&shp=a5d48078&shcp=81f88b70"
                                 alt="HGTV"
+                                fallback="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/21dcb8dc2103ae24a7f82144e3fd9f02.jpeg?lk3s=a5d48078&nonce=1345&refresh_token=8fb580475ea2aa61beaccaeaf75409b8&x-expires=1723215600&x-signature=cD%2B3pRqYhibildQq1Kg%2BordQBGc%3D&shp=a5d48078&shcp=81f88b70"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
