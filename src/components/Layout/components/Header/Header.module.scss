@@ -20,87 +20,6 @@
     justify-content: space-between;
 }
 
-.search,
-.search-result {
-    width: 361px;
-}
-
-.search-title {
-    padding: 5px 12px;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: rgba(22, 34, 35, 0.5);
-}
-
-.search {
-    position: relative;
-    display: flex;
-    height: var(--search-height);
-    padding-left: 16px;
-    border-radius: var(--search-border-radius);
-    background-color: rgba(22, 24, 35, 0.06);
-    border: 1.5px solid transparent;
-
-    &::after {
-        content: '';
-        position: absolute;
-        top: var(--search-top-spacer);
-        right: var(--search-button-width);
-        height: calc(var(--search-height) - var(--search-top-spacer) * 2);
-        width: 1px;
-        background: rgba(22, 24, 35, 0.12);
-    }
-
-    &:focus-within {
-        border-color: rgba(22, 24, 35, 0.2);
-    }
-
-    &__input {
-        flex: 1;
-        height: 100%;
-        font-size: 1.6rem;
-        caret-color: var(--primary-color);
-        color: var(--black-color);
-    }
-
-    &__input:not(:placeholder-shown) ~ &__btn {
-        color: rgba(22, 24, 35, 0.75);
-    }
-
-    &__clear,
-    &__loading {
-        position: absolute;
-        right: calc(var(--search-button-width) + 16px);
-        top: 50%;
-        transform: translateY(-50%);
-        color: rgba(22, 24, 35, 0.34);
-    }
-
-    &__clear {
-    }
-
-    &__loading {
-    }
-
-    &__btn {
-        width: var(--search-button-width);
-        height: 100%;
-        border-top-right-radius: var(--search-border-radius);
-        border-bottom-right-radius: var(--search-border-radius);
-        font-size: 1.8rem;
-        color: rgba(22, 24, 35, 0.34);
-        cursor: pointer;
-
-        &:hover {
-            background: rgba(22, 24, 35, 0.03);
-        }
-
-        &:active {
-            background: rgba(22, 24, 35, 0.06);
-        }
-    }
-}
-
 // Actions
 .actions {
     display: flex;
@@ -114,13 +33,32 @@
 }
 
 .action-btn {
-    padding: 4px 12px;
+    position: relative;
+    display: flex;
     font-size: 2.2rem;
+    color: #161823;
+    background-color: transparent;
+    padding: 4px 10px;
     color: #161823;
 }
 
+.badge {
+    position: absolute;
+    top: -3px;
+    right: 0px;
+    padding: 0px 6px;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 10px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--white);
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: var(--primary-color);
+}
+
 .user-avatar {
-    margin-left: 12px;
+    margin-left: 14px;
     width: 32px;
     height: 32px;
     object-fit: cover;
