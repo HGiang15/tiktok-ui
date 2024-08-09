@@ -54,10 +54,17 @@
         color: rgba(22, 24, 35, 0.34);
     }
 
-    &__clear {
+    &__loading {
+        animation: spinner 0.8s linear infinite;
     }
 
-    &__loading {
+    @keyframes spinner {
+        from {
+            transform: translateY(-50%) rotate(0deg);
+        }
+        to {
+            transform: translateY(-50%) rotate(360deg);
+        }
     }
 
     &__btn {

@@ -14,21 +14,35 @@ import styles from './Search.module.scss';
 const cx = classNames.bind(styles);
 
 function Search() {
-    const [searchValue, setSearchValue] = useState('');
-    const [searchResult, setSearchResult] = useState([]);
-    const [showResult, setShowResult] = useState(true);
+    const [searchValue, setSearchValue] = useState(''); // lưu trữ giá trị nhập liệu
+    const [searchResult, setSearchResult] = useState([]); // lưu trữ các kết quả tìm kiếm
+    const [showResult, setShowResult] = useState(true); // hiển thị kết quả tìm kiếm
+    const [loading, setLoading] = useState(false); // xử lý loading khi nhập vào input
 
     const inputRef = useRef();
 
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2, 3]);
-        }, 0);
-    }, []);
+        if (!searchValue.trim()) {
+            setSearchResult([]);
+            return;
+        }
+
+        setLoading(true);
+
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+            .then((res) => res.json())
+            .then((res) => {
+                setSearchResult(res.data);
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
+            });
+    }, [searchValue]);
 
     const handleClear = () => {
         setSearchValue('');
-        setSearchResult([])
+        setSearchResult([]);
         inputRef.current.focus();
     };
 
@@ -44,10 +58,9 @@ function Search() {
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
                         <h4 className={cx('search-title')}>Accounts</h4>
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
+                        {searchResult.map((result) => (
+                            <AccountItem key={result.id} data={result} />
+                        ))}
                     </PopperWrapper>
                 </div>
             )}
@@ -65,13 +78,13 @@ function Search() {
                     onFocus={() => setShowResult(true)}
                 />
 
-                {!!searchValue && (
+                {!!searchValue && !loading && (
                     <button className={cx('search__clear')} onClick={handleClear}>
                         <FontAwesomeIcon icon={faCircleXmark} />
                     </button>
                 )}
 
-                {/*<FontAwesomeIcon className={cx('search__loading')} icon={faSpinner} /> */}
+                {loading && <FontAwesomeIcon className={cx('search__loading')} icon={faSpinner} />}
 
                 <button className={cx('search__btn')}>
                     <SearchIcon />
