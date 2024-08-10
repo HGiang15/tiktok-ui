@@ -136,9 +136,8 @@ function Header() {
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
-                                src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/7e55d6bc59682d3dce56dbdf9ce96f01~c5_720x720.jpeg?lk3s=a5d48078&nonce=18434&refresh_token=9f4c1ed60a867802942cc10f7679e582&x-expires=1723215600&x-signature=8TxVP2%2FLgZKsdeceUFcEHpw45m0%3D&shp=a5d48078&shcp=81f88b70"
+                                src="https://files.fullstack.edu.vn/f8-prod/user_avatars/1/623d4b2d95cec.png"
                                 alt="HGTV"
-                                fallback="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/21dcb8dc2103ae24a7f82144e3fd9f02.jpeg?lk3s=a5d48078&nonce=1345&refresh_token=8fb580475ea2aa61beaccaeaf75409b8&x-expires=1723215600&x-signature=cD%2B3pRqYhibildQq1Kg%2BordQBGc%3D&shp=a5d48078&shcp=81f88b70"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
