@@ -39,6 +39,7 @@
         font-size: 1.6rem;
         color: var(--black-color);
         caret-color: var(--primary-color);
+        font-family: var(--font-family);
     }
 
     &__input:not(:placeholder-shown) ~ .search__btn {

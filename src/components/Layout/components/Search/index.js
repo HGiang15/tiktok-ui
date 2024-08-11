@@ -29,7 +29,6 @@ function Search() {
             return;
         }
 
-        
         const fetchApi = async () => {
             setLoading(true);
 
@@ -42,14 +41,24 @@ function Search() {
         fetchApi();
     }, [debounced]);
 
+    // Xoa Input
     const handleClear = () => {
         setSearchValue('');
         setSearchResult([]);
         inputRef.current.focus();
     };
 
+    // An ket qua kim kiem
     const handleHideResult = () => {
         setShowResult(false);
+    };
+
+    // Kiem tra nhap ko cho nhap dau space o tim kiem
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
     };
 
     return (
@@ -76,7 +85,7 @@ function Search() {
                     type="text"
                     placeholder="Search account and videos"
                     spellCheck={false}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     onFocus={() => setShowResult(true)}
                 />
 
@@ -88,7 +97,7 @@ function Search() {
 
                 {loading && <FontAwesomeIcon className={cx('search__loading')} icon={faSpinner} />}
 
-                <button className={cx('search__btn')}>
+                <button className={cx('search__btn')} onMouseDown={(e) => e.preventDefault()}>
                     <SearchIcon />
                 </button>
             </div>
